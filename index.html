@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skup Aut  - Wypełnij Formularz</title>
+    <!-- Ładowanie Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Ładowanie czcionki Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Ustawienie domyślnej czcionki */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Prosta animacja pojawiania się */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen p-4">
+
+    <!-- Główny kontener karty formularza -->
+    <div class="w-full max-w-2xl bg-white rounded-xl shadow-2xl overflow-hidden fade-in mb-12">
+        
+        <!-- Baner -->
+        <div>
+            <img class="w-full h-48 object-cover" src="https://placehold.co/800x300/374151/e0e7ff?text=Skupujemy+Auta+w+Każdym+Stanie" alt="Baner skupu aut">
+        </div>
+
+        <div class="p-8 md:p-12">
+            <!-- Nagłówek -->
+            <div class="text-center mb-8">
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-900">Skup Aut</h1>
+                <p class="text-gray-600 mt-2 text-lg">Masz auto na sprzedaż? Wypełnij formularz poniżej.</p>
+                <p class="text-blue-600 font-semibold mt-3 text-base">Szybka wycena, gotówka od ręki, dojazd do klienta!</p>
+            </div>
+
+            <!-- Formularz -->
+            <form id="carForm" class="space-y-6">
+                
+                <!-- Marka i Model (Pełna szerokość) -->
+                <div>
+                    <label for="makeModel" class="block text-sm font-medium text-gray-700 mb-1">Marka i Model</label>
+                    <input type="text" id="makeModel" name="makeModel" required
+                           class="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+                           placeholder="np. Toyota Corolla">
+                </div>
+
+                <!-- Siatka dla Rocznika i Przebiegu -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Rocznik -->
+                    <div>
+                        <label for="year" class="block text-sm font-medium text-gray-700 mb-1">Rocznik</label>
+                        <input type="number" id="year" name="year" min="1950" max="2025" required
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+                               placeholder="np. 2005">
+                    </div>
+                    
+                    <!-- Przebieg -->
+                    <div>
+                        <label for="mileage" class="block text-sm font-medium text-gray-700 mb-1">Przebieg (w km)</label>
+                        <input type="number" id="mileage" name="mileage" step="1000" required
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+                               placeholder="np. 210000">
+                    </div>
+                </div>
+
+                <!-- Klimatyzacja (Select) -->
+                <div>
+                    <label for="ac" class="block text-sm font-medium text-gray-700 mb-1">Klimatyzacja</label>
+                    <select id="ac" name="ac" required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 bg-white">
+                        <option value="" disabled selected>Wybierz opcję...</option>
+                        <option value="Tak, Klimatronic (automatyczna)">Tak, Klimatronic (automatyczna)</option>
+                        <option value="Tak, manualna">Tak, manualna</option>
+                        <option value="Nie, brak klimatyzacji">Nie, brak klimatyzacji</option>
+                    </select>
+                </div>
+
+                <!-- Lokalizacja Odbioru -->
+                <div>
+                    <label for="location" class="block text-sm font-medium text-gray-700 mb-1">Lokalizacja Odbioru Auta</label>
+                    <input type="text" id="location" name="location" required
+                           class="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+                           placeholder="np. Warszawa, Mokotów">
+                </div>
+
+                <!-- Linki do zdjęć -->
+                <div>
+                    <label for="photos" class="block text-sm font-medium text-gray-700 mb-1">Linki do zdjęć</label>
+                    <input type="text" id="photos" name="photos"
+                           class="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+                            placeholder="np. imgur.com/a/..., drive.google.com/...">
+                    <p class="mt-1 text-xs text-gray-500">
+                        <span class="font-bold text-red-600">Ważne:</span> Nie możemy przyjmować plików bezpośrednio. 
+                        Prosimy o wgranie zdjęć na darmowy serwis (np. <a href="https://imgur.com/upload" target="_blank" class="text-blue-500 hover:underline">Imgur</a>) i wklejenie tutaj linku.
+                    </p>
+                </div>
+
+                <!-- Inne uwagi -->
+                <div>
+                    <label for="notes" class="block text-sm font-medium text-gray-700 mb-1">Dodatkowe uwagi (opcjonalnie)</label>
+                    <textarea id="notes" name="notes" rows="3"
+                              class="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+                              placeholder="np. stan opon, widoczna rdza, ostatni serwis..."></textarea>
+                </div>
+
+                <!-- Info 24/7 -->
+                <div class="text-center text-gray-600 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                    <p class="font-semibold">Odpowiadamy na wszystkie zgłoszenia w ciągu 24 godzin!</p>
+                    <p class="text-sm">Gwarantujemy profesjonalną obsługę i dyskrecję.</p>
+                </div>
+
+                <!-- Przycisk Wyślij -->
+                <div>
+                    <button type="submit" id="submitButton"
+                            class="w-full flex justify-center py-3 px-6 border border-transparent rounded-lg shadow-lg text-base font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-300 transform hover:scale-105 disabled:bg-gray-400 disabled:cursor-not-allowed">
+                        Wyślij Zgłoszenie
+                    </button>
+                </div>
+                
+                <!-- Wiadomość o statusie (pokaże się po wysłaniu) -->
+                <div id="statusMessage" class="text-center text-lg mt-4"></div>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- Stopka -->
+    <footer class="w-full text-center p-4 text-gray-500 text-sm">
+        <p>&copy; 2025 Skup Aut na Eksport. Wszelkie prawa zastrzeżone.</p>
+        <p class="mt-1">Kontakt: <a href="mailto:kontakt@skupaut.pl" class="text-blue-500 hover:underline">kontakt@skupaut.pl</a> | Tel: +48 123 456 789</p>
+    </footer>
+
+    <script>
+        // --- OBSŁUGA FORMULARZA ---
+
+        // Pobranie elementów DOM
+        const carForm = document.getElementById('carForm');
+        const submitButton = document.getElementById('submitButton');
+        const statusMessage = document.getElementById('statusMessage');
+
+        // 
+        // --- WAŻNE: EDYCJA ---
+        // Wklej tutaj URL webhooka z Discorda.
+        // Instrukcja: Wejdź na Discord -> Ustawienia serwera -> Integracje -> Webhooki -> Nowy Webhook -> Kopiuj URL Webhooka
+        //
+        const webhookUrl = 'https://discord.com/api/webhooks/1434941691659550730/NEH_28BXdvLvzfhsKvyobzVU-D6UZQr5ZBw_x2RMx5Ro4A32G0ix7vxSbC8kYA7_yxUQ';
+        // Przykład: const webhookUrl = 'https://discord.com/api/webhooks/1234567890/ABCDEFG...';
+        //
+
+        // Nasłuchiwanie na wysłanie formularza
+        carForm.addEventListener('submit', async (event) => {
+            // Zatrzymanie domyślnej akcji formularza (przeładowania strony)
+            event.preventDefault();
+
+            // 1. Sprawdzenie, czy URL webhooka został ustawiony
+            if (!webhookUrl || webhookUrl.includes('TUTAJ_WLEJ')) {
+                statusMessage.textContent = 'Błąd: Webhook URL nie został skonfigurowany przez właściciela strony.';
+                statusMessage.className = 'text-center text-lg mt-4 text-red-600';
+                return;
+            }
+
+            // 2. Zablokowanie przycisku i pokazanie statusu ładowania
+            submitButton.disabled = true;
+            submitButton.textContent = 'Wysyłanie...';
+            statusMessage.textContent = ''; // Wyczyść poprzednie statusy
+
+            // 3. Zebranie danych z formularza
+            const formData = new FormData(carForm);
+            const makeModel = formData.get('makeModel');
+            const year = formData.get('year');
+            const mileage = formData.get('mileage');
+            const ac = formData.get('ac');
+            const location = formData.get('location'); // Nowe pole
+            const photos = formData.get('photos');
+            const notes = formData.get('notes');
+
+            // 4. Stworzenie obiektu "embed" dla Discorda
+            // To sprawia, że wiadomość na Discordzie wygląda ładnie
+            const discordPayload = {
+                username: "System Zgłoszeń Aut", // Nazwa bota, która się wyświetli
+                avatar_url: "https://placehold.co/128x128/2563eb/ffffff?text=AUTO", // Avatar bota
+                embeds: [
+                    {
+                        title: "Nowe Zgłoszenie Auta na Sprzedaż",
+                        color: 2424241, // Kolor paska bocznego (niebieski)
+                        timestamp: new Date().toISOString(), // Aktualna data i godzina
+                        fields: [
+                            {
+                                name: "Marka i Model",
+                                value: makeModel,
+                                inline: false
+                            },
+                            {
+                                name: "Lokalizacja Odbioru",
+                                value: location,
+                                inline: false
+                            },
+                            {
+                                name: "Rocznik",
+                                value: year,
+                                inline: true
+                            },
+                            {
+                                name: "Przebieg (km)",
+                                value: mileage,
+                                inline: true
+                            },
+                            {
+                                name: "Klimatyzacja",
+                                value: ac,
+                                inline: false
+                            },
+                            {
+                                name: "Linki do Zdjęć",
+                                value: photos || "Nie podano", // Jeśli puste, wpisze "Nie podano"
+                                inline: false
+                            },
+                            {
+                                name: "Dodatkowe uwagi",
+                                value: notes || "Brak uwag", // Jeśli puste, wpisze "Brak uwag"
+                                inline: false
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            // 5. Wysłanie danych do webhooka
+            try {
+                const response = await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(discordPayload)
+                });
+
+                if (response.ok) {
+                    // Sukces
+                    statusMessage.textContent = 'Wysłano pomyślnie! Skontaktujemy się wkrótce.';
+                    statusMessage.className = 'text-center text-lg mt-4 text-green-600';
+                    carForm.reset(); // Wyczyść formularz
+                } else {
+                    // Błąd serwera Discord
+                    statusMessage.textContent = 'Błąd podczas wysyłania. Spróbuj ponownie później.';
+                    statusMessage.className = 'text-center text-lg mt-4 text-red-600';
+                }
+
+            } catch (error) {
+                // Błąd sieciowy
+                console.error('Błąd sieci:', error);
+                statusMessage.textContent = 'Błąd sieci. Sprawdź połączenie i spróbuj ponownie.';
+                statusMessage.className = 'text-center text-lg mt-4 text-red-600';
+            } finally {
+                // 6. Odblokowanie przycisku niezależnie od wyniku
+                submitButton.disabled = false;
+                submitButton.textContent = 'Wyślij Zgłoszenie';
+            }
+        });
+    </script>
+
+</body>
+</html>
+
